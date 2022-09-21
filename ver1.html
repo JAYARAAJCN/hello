@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>EMPLOYEE PAYSLIP ver1</title>
+<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@media print {
+  .noPrint{
+    display:none;
+  }
+}
+</style>
+</head>
+<body>
+   <center><h1>EMPLOYEE PAY SLIP (6TH  PAY COMMISSION)</h1></center>   
+   <form name = "form1" method="post" >
+   <table border = "1" align="center">
+     <tr>
+         <td>Name</td>
+         <td><input type = "text" name = "firstname" /></td>
+     </tr>
+     <tr>
+         <td>User ID</td>
+         <td><input type = "text" name = "userid" /></td>
+     </tr>
+     <tr>
+         <td>Designation</td>
+         <td><input type = "text" name = "designation" /></td>
+     </tr>
+     <tr>
+         <td>CTC</td>
+         <td><input type = "text" name = "CTC"></td>
+     </tr>
+     <tr>
+	 <td>Total Calender Days</td>
+	 <td><input type = "text" name ="CD"></td>
+     </tr>
+     <tr>
+         <td>NO OF Days Worked</td>
+         <td><input type = "text" name ="DW"></td>
+     </tr>	
+     <tr class="noPrint">
+         <td colspan = "2" align = "center">
+         <input type = "button" name = "calculate" value = "Calculate"onclick ="calc()"></td>
+     </tr>
+   </table>
+   </form><br>
+<p>
+   <form name="form2" method="post">
+      <table border="1" align="center">
+<tr>
+   <th>EARNING</th>
+   <th>DEDUCTION</th>
+</tr>
+        <tr>                
+           <td>Basic Pay:<span style="padding-left:83px"><input type = "text" name="bp"/></p>
+
+               Dearness Allowance :<span style="padding-left:11px"><input type = "text" name = "da"/><br><br>
+               House Rent Allowance:<input type = "text" name = "hra"><br><br>
+               Additional Allowance:<span style="padding-left:5px"><input type = "text" name = "aa"><br><br>
+               Gross Pay:<span style="padding-left:81px"><input type = "text" name = "gs"><br>
+                
+            
+            </td>
+            <td>
+                        
+               Provident Fund:
+                <input type = "text" name = "pf"><br><br>
+           
+               L.O.P:<span style="padding-left:60px"></span>
+                <input type ="text" name="lop"/><br><br> 
+                Insurance:<span style="padding-left:36px"></span>
+                <input type = "text" name = "tax"><br><br>
+            
+            
+                Deduction:<span style="padding-left:31px"></span>
+               <input type = "text" name = "deduction" ><br><br>
+            
+        </td> 
+</tr>   
+  <tr><td colspan="2">              NetPay
+               <input type = "text" name = "np"><br>
+        </td>
+</tr>
+
+                                
+    </form>
+</p>
+</table>
+<center>
+<button  onclick="window.print();" class="noPrint"> print &#xf02f;</button>
+
+
+</body>
+<script>
+function calc()
+{
+var ctc,bp,da,hra,aa,gp,pf,lop,ins,ded,np,ms,dw,gpp,lt,cd,pff,bpp,insf,insp;
+ctc=document.form1.CTC.value;
+dw=document.form1.DW.value;
+cd=document.form1.CD.value;
+ms=ctc/12;
+bp=ms/2;
+da=(bp/100)*34;
+hra=(bp/100)*10;
+aa=ms-(bp+da+hra);
+gs=bp+da+hra+aa;
+gpp=gs/cd;
+bpp=bp/cd;
+pff=(bpp/100)*10;
+pf=pff*dw;
+insf=900;
+insp=900/cd;
+ins=insp*dw;
+lt=cd-dw;
+lop=gpp*lt;
+dec=pf+lop+ins;
+np=gs-dec;
+
+document.form2.da.value = Math.round(da);
+document.form2.bp.value= Math.round(bp);
+document.form2.hra.value= Math.round(hra);
+document.form2.aa.value=Math.round(aa);
+document.form2.gs.value= Math.round(gs);
+document.form2.lop.value=Math.round(lop);
+document.form2.np.value= Math.round(np);
+document.form2.tax.value=Math.round(ins);
+document.form2.pf.value=Math.round(pf);
+document.form2.deduction.value=Math.round(dec);
+}
+</script>
+</html>
+
